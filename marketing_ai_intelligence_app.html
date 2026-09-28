@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAII | Marketing AI Intelligence & Digital Strategy Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f4ff',
+                            100: '#e0e8ff',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                            accent: '#8b5cf6',
+                            instagram: '#e1306c'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .article-content { font-family: 'Merriweather', serif; line-height: 1.8; }
+        .glass-header { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(156, 163, 175, 0.5); border-radius: 9999px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(107, 114, 128, 0.8); }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100 min-h-screen flex flex-col transition-colors duration-200">
+
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <header class="sticky top-0 z-40 w-full border-b border-gray-200 dark:border-gray-800 bg-white/90 dark:bg-gray-900/90 glass-header transition-colors">
+        <!-- Top Announcement & Social Bar -->
+        <div class="bg-gradient-to-r from-blue-900 via-indigo-900 to-purple-900 text-white text-xs py-1.5 px-4">
+            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <span class="bg-blue-500 text-white text-[10px] uppercase font-bold px-1.5 py-0.5 rounded">NEW</span>
+                    <span class="truncate">MAII 3.0 Live: Advanced AI Marketing & SEO Intelligence Suite</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <span class="hidden md:inline text-gray-300">Connect with us:</span>
+                    <div class="flex items-center gap-3">
+                        <a href="https://instagram.com" target="_blank" rel="noopener" class="text-pink-400 hover:text-pink-300 transition-colors" title="Instagram">
+                            <i class="fab fa-instagram text-sm"></i>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" rel="noopener" class="text-sky-400 hover:text-sky-300 transition-colors" title="Twitter / X">
+                            <i class="fab fa-x-twitter text-sm"></i>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-300 transition-colors" title="LinkedIn">
+                            <i class="fab fa-linkedin-in text-sm"></i>
+                        </a>
+                        <a href="https://youtube.com" target="_blank" rel="noopener" class="text-red-400 hover:text-red-300 transition-colors" title="YouTube">
+                            <i class="fab fa-youtube text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation Bar -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 gap-4">
+                
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#home" onclick="navigateTo('home')" class="flex items-center gap-2 font-black text-xl tracking-tight">
+                        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-purple-600 flex items-center justify-center text-white shadow-lg shadow-blue-500/20">
+                            <i class="fas fa-brain text-lg"></i>
+                        </div>
+                        <span>MAII<span class="text-blue-600 dark:text-blue-400">.ai</span></span>
+                    </a>
+                </div>
+
+                <!-- Visible Desktop Direct Links (NO Dropdowns as requested) -->
+                <nav class="hidden lg:flex items-center space-x-1 text-xs font-semibold uppercase tracking-wider overflow-x-auto custom-scrollbar py-2">
+                    <a href="#home" onclick="navigateTo('home')" class="nav-link px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Home</a>
+                    <a href="#digital-marketing" onclick="navigateTo('digital-marketing')" class="nav-link px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Digital Marketing</a>
+                    <a href="#seo-hub" onclick="navigateTo('seo-hub')" class="nav-link px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">SEO Hub</a>
+                    <a href="#ai-hub" onclick="navigateTo('ai-hub')" class="nav-link px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">AI Hub</a>
+                    <a href="#ai-tools" onclick="navigateTo('ai-tools')" class="nav-link px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">AI Tools</a>
+                    <a href="#marketing-tools" onclick="navigateTo('marketing-tools')" class="nav-link px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Marketing Tools</a>
+                    <a href="#free-tools" onclick="navigateTo('free-tools')" class="nav-link px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-blue-600 dark:text-blue-400 transition-colors">Free SEO Utilities</a>
+                    <a href="#ai-generators" onclick="navigateTo('ai-generators')" class="nav-link px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-purple-600 dark:text-purple-400 transition-colors">AI Generators</a>
+                    <a href="#dashboard" onclick="navigateTo('dashboard')" class="nav-link px-3 py-2 rounded-lg bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800 transition-colors">Write / Dashboard</a>
+                </nav>
+
+                <!-- Header Action Buttons -->
+                <div class="flex items-center gap-2">
+                    <button onclick="toggleSearchModal()" class="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" title="Search">
+                        <i class="fas fa-search text-base"></i>
+                    </button>
+                    
+                    <button id="theme-toggle" onclick="toggleDarkMode()" class="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" title="Toggle Dark/Light Mode">
+                        <i class="fas fa-moon text-base dark:hidden"></i>
+                        <i class="fas fa-sun text-base hidden dark:block"></i>
+                    </button>
+
+                    <div id="user-header-auth" class="hidden sm:flex items-center gap-2">
+                        <!-- Populated by JS -->
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <button onclick="toggleMobileMenu()" class="lg:hidden p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg">
+                        <i class="fas fa-bars text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Responsive Drawer -->
+        <div id="mobile-menu" class="hidden lg:hidden border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 px-4 pt-2 pb-4 space-y-1">
+            <a href="#home" onclick="navigateTo('home'); toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">Home</a>
+            <a href="#digital-marketing" onclick="navigateTo('digital-marketing'); toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">Digital Marketing</a>
+            <a href="#seo-hub" onclick="navigateTo('seo-hub'); toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">SEO Hub</a>
+            <a href="#ai-hub" onclick="navigateTo('ai-hub'); toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">AI Hub</a>
+            <a href="#ai-tools" onclick="navigateTo('ai-tools'); toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">AI Tools</a>
+            <a href="#marketing-tools" onclick="navigateTo('marketing-tools'); toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">Marketing Tools</a>
+            <a href="#free-tools" onclick="navigateTo('free-tools'); toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-blue-600 dark:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800">Free SEO Utilities</a>
+            <a href="#ai-generators" onclick="navigateTo('ai-generators'); toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-purple-600 dark:text-purple-400 hover:bg-gray-100 dark:hover:bg-gray-800">AI Generators</a>
+            <a href="#dashboard" onclick="navigateTo('dashboard'); toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-indigo-600 dark:text-indigo-400 hover:bg-gray-100 dark:hover:bg-gray-800">Write / Author Dashboard</a>
+        </div>
+    </header>
+
+    <main id="app-container" class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Dynamic Router Content Views render here -->
+    </main>
+
+    <footer class="bg-gray-900 text-gray-300 border-t border-gray-800 mt-16 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+                <!-- Brand Info -->
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-2 font-black text-2xl text-white mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white">
+                            <i class="fas fa-brain text-sm"></i>
+                        </div>
+                        <span>MAII<span class="text-blue-400">.ai</span></span>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-6 max-w-sm">
+                        Marketing AI Intelligence is the premier knowledge hub, directory, and real-time utility platform for modern growth marketers, SEO specialists, and AI practitioners.
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <a href="https://instagram.com" target="_blank" rel="noopener" class="w-9 h-9 rounded-full bg-gradient-to-tr from-yellow-500 via-red-500 to-purple-600 flex items-center justify-center text-white hover:opacity-90 transition-opacity" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" rel="noopener" class="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-gray-700 transition-colors" title="Twitter / X">
+                            <i class="fab fa-x-twitter"></i>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener" class="w-9 h-9 rounded-full bg-blue-600 flex items-center justify-center text-white hover:bg-blue-500 transition-colors" title="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://youtube.com" target="_blank" rel="noopener" class="w-9 h-9 rounded-full bg-red-600 flex items-center justify-center text-white hover:bg-red-500 transition-colors" title="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Navigation Columns -->
+                <div>
+                    <h4 class="text-xs font-bold text-gray-100 uppercase tracking-wider mb-4">Content Hubs</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#digital-marketing" onclick="navigateTo('digital-marketing')" class="hover:text-white transition-colors">Digital Marketing</a></li>
+                        <li><a href="#seo-hub" onclick="navigateTo('seo-hub')" class="hover:text-white transition-colors">SEO Intelligence</a></li>
+                        <li><a href="#ai-hub" onclick="navigateTo('ai-hub')" class="hover:text-white transition-colors">AI Hub & Prompting</a></li>
+                        <li><a href="#articles" onclick="navigateTo('articles')" class="hover:text-white transition-colors">All Articles</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-gray-100 uppercase tracking-wider mb-4">Utilities & Directory</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#free-tools" onclick="navigateTo('free-tools')" class="hover:text-white transition-colors">10 Free SEO Utilities</a></li>
+                        <li><a href="#ai-generators" onclick="navigateTo('ai-generators')" class="hover:text-white transition-colors">5 AI Content Generators</a></li>
+                        <li><a href="#ai-tools" onclick="navigateTo('ai-tools')" class="hover:text-white transition-colors">AI Tools Directory</a></li>
+                        <li><a href="#marketing-tools" onclick="navigateTo('marketing-tools')" class="hover:text-white transition-colors">Marketing Software</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-gray-100 uppercase tracking-wider mb-4">Authors & Account</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#dashboard" onclick="navigateTo('dashboard')" class="hover:text-white transition-colors">Author Dashboard</a></li>
+                        <li><a href="#dashboard" onclick="navigateTo('dashboard')" class="hover:text-white transition-colors">Write & Publish Article</a></li>
+                        <li><a href="#about" onclick="navigateTo('about')" class="hover:text-white transition-colors">About MAII</a></li>
+                        <li><a href="#contact" onclick="navigateTo('contact')" class="hover:text-white transition-colors">Contact Editorial</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+                <p>&copy; 2026 Marketing AI Intelligence (MAII). All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#privacy" onclick="navigateTo('privacy')" class="hover:text-gray-400">Privacy Policy</a>
+                    <a href="#terms" onclick="navigateTo('terms')" class="hover:text-gray-400">Terms of Service</a>
+                    <a href="#sitemap" onclick="navigateTo('sitemap')" class="hover:text-gray-400">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="search-modal" class="fixed inset-0 z-50 bg-gray-900/80 backdrop-blur-sm hidden flex items-start justify-center pt-20 px-4">
+        <div class="bg-white dark:bg-gray-900 rounded-2xl w-full max-w-2xl shadow-2xl border border-gray-200 dark:border-gray-800 overflow-hidden">
+            <div class="p-4 border-b border-gray-200 dark:border-gray-800 flex items-center gap-3">
+                <i class="fas fa-search text-gray-400 text-lg"></i>
+                <input type="text" id="search-input" onkeyup="handleLiveSearch(this.value)" placeholder="Search articles, AI tools, or SEO utilities..." class="w-full bg-transparent text-base focus:outline-none dark:text-white">
+                <button onclick="toggleSearchModal()" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-sm">Esc</button>
+            </div>
+            <div id="search-results" class="max-h-96 overflow-y-auto p-4 space-y-2 custom-scrollbar">
+                <p class="text-xs text-gray-400 text-center py-4">Start typing to search across all content and tools...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        // Initial Local Storage Data Seeding
+        const initialArticles = [
+            {
+                id: "art-1",
+                title: "The 2026 AI Search Engine Optimization Playbook: Generative Engine Optimization (GEO)",
+                slug: "2026-ai-search-generative-engine-optimization-geo",
+                excerpt: "Traditional SEO is giving way to Generative Engine Optimization. Learn how to rank inside SearchGPT, Perplexity, and Gemini response clusters.",
+                content: `<h2>The Rise of Generative Engine Optimization (GEO)</h2><p>Search engines are no longer just delivering ten blue links. With the dominance of conversational AI engines like ChatGPT, Perplexity, and Gemini, digital marketers must pivot from traditional keyword density to Generative Engine Optimization (GEO).</p><h3>Key Drivers of GEO Success</h3><p>To rank inside LLM response outputs, your content must satisfy three core criteria:</p><ul><li><strong>Information Density:</strong> High facts per sentence ratio.</li><li><strong>Structured Schema:</strong> JSON-LD and concise summary blocks.</li><li><strong>Authoritative Citation:</strong> Direct statistics and authoritative expert quotes.</li></ul>`,
+                category: "SEO",
+                authorId: "usr-1",
+                authorName: "Sarah Jenkins",
+                authorAvatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
+                date: "2026-09-20",
+                readTime: "6 min read",
+                coverImage: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&fit=crop"
+            },
+            {
+                id: "art-2",
+                title: "Building Automated Content Pipelines with Autonomous AI Agents",
+                slug: "building-automated-content-pipelines-ai-agents",
+                excerpt: "A deep dive into setting up Multi-Agent AI workflows for keyword research, draft generation, fact-checking, and auto-publishing.",
+                content: `<h2>Autonomous AI Agents in Marketing</h2><p>Modern content teams are utilizing agentic workflows where autonomous AI agents collaborate to perform complex research and editing tasks without continuous human supervision.</p><h3>The 4-Agent Framework</h3><p>1. <strong>Researcher Agent:</strong> Gathers real-time statistics.<br>2. <strong>Drafting Agent:</strong> Outlines and writes tone-consistent articles.<br>3. <strong>Fact-Checker:</strong> Verifies numbers against trusted sources.<br>4. <strong>SEO Specialist:</strong> Optimizes heading tags and metadata.</p>`,
+                category: "AI",
+                authorId: "usr-2",
+                authorName: "Alex Mercer",
+                authorAvatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop",
+                date: "2026-09-18",
+                readTime: "8 min read",
+                coverImage: "https://images.unsplash.com/photo-1677442136019-21780efad99a?w=800&fit=crop"
+            },
+            {
+                id: "art-3",
+                title: "Omnichannel Digital Marketing Strategies for High-Growth SaaS",
+                slug: "omnichannel-digital-marketing-strategies-saas",
+                excerpt: "How top-tier B2B software companies coordinate organic LinkedIn content, performance ads, and email nurture tracks.",
+                content: `<h2>Synchronizing Marketing Touchpoints</h2><p>Multi-touch attribution demands seamless coordination across LinkedIn, YouTube, and email nurture sequences. Learn how to construct unified messaging loops.</p>`,
+                category: "Digital Marketing",
+                authorId: "usr-1",
+                authorName: "Sarah Jenkins",
+                authorAvatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
+                date: "2026-09-15",
+                readTime: "5 min read",
+                coverImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&fit=crop"
+            }
+        ];
+
+        const initialTools = [
+            { id: "t1", name: "ChatGPT 4o", type: "AI Tool", category: "Writing & Chat", description: "Flagship multimodal AI model from OpenAI for complex reasoning and copywriting.", price: "Freemium", link: "https://chat.openai.com", rating: 4.9 },
+            { id: "t2", name: "Claude 3.5 Sonnet", type: "AI Tool", category: "Writing & Coding", description: "Anthropic's leading model known for natural, nuanced human writing.", price: "Freemium", link: "https://claude.ai", rating: 4.9 },
+            { id: "t3", name: "Perplexity AI", type: "AI Tool", category: "Search & Research", description: "AI-powered answer engine providing live web citations and detailed search.", price: "Freemium", link: "https://perplexity.ai", rating: 4.8 },
+            { id: "t4", name: "Surfer SEO", type: "Marketing Tool", category: "SEO & Content", description: "Data-driven SEO tool for content optimization based on top SERP competitors.", price: "Paid", link: "https://surferseo.com", rating: 4.7 },
+            { id: "t5", name: "Jasper AI", type: "Marketing Tool", category: "Copywriting", description: "Enterprise brand-voice AI writer built specifically for marketing teams.", price: "Paid", link: "https://jasper.ai", rating: 4.6 },
+            { id: "t6", name: "Midjourney", type: "AI Tool", category: "Image Generation", description: "Industry-standard text-to-image AI generator for hyper-realistic visual art.", price: "Paid", link: "https://midjourney.com", rating: 4.9 }
+        ];
+
+        // Global State
+        let state = {
+            currentUser: JSON.parse(localStorage.getItem('maii_user')) || { id: "usr-1", name: "Sarah Jenkins", email: "sarah@maii.ai", role: "Senior Editor" },
+            articles: JSON.parse(localStorage.getItem('maii_articles')) || initialArticles,
+            tools: initialTools,
+            currentRoute: 'home',
+            routeParam: null
+        };
+
+        // Save State Helpers
+        function saveArticles() {
+            localStorage.setItem('maii_articles', JSON.stringify(state.articles));
+        }
+
+        function saveUser(user) {
+            state.currentUser = user;
+            localStorage.setItem('maii_user', JSON.stringify(user));
+            updateHeaderAuthUI();
+        }
+
+        function initApp() {
+            // Dark Mode check
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+
+            updateHeaderAuthUI();
+
+            // Hash Router Listener
+            window.addEventListener('hashchange', handleRoute);
+            handleRoute();
+        }
+
+        function toggleDarkMode() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+
+        function showToast(msg, type = 'success') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `pointer-events-auto px-4 py-3 rounded-xl shadow-xl text-xs font-semibold flex items-center gap-2 transform transition-all duration-300 translate-y-2 opacity-0 ${
+                type === 'success' ? 'bg-emerald-600 text-white' : 'bg-red-600 text-white'
+            }`;
+            toast.innerHTML = `<i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i> <span>${msg}</span>`;
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-2', 'opacity-0');
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-2');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        function navigateTo(route, param = null) {
+            state.currentRoute = route;
+            state.routeParam = param;
+            window.location.hash = route + (param ? `/${param}` : '');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            renderView();
+        }
+
+        function handleRoute() {
+            const hash = window.location.hash.replace('#', '') || 'home';
+            const parts = hash.split('/');
+            state.currentRoute = parts[0] || 'home';
+            state.routeParam = parts[1] || null;
+            renderView();
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function toggleSearchModal() {
+            const modal = document.getElementById('search-modal');
+            modal.classList.toggle('hidden');
+            if (!modal.classList.contains('hidden')) {
+                document.getElementById('search-input').focus();
+            }
+        }
+
+        function updateHeaderAuthUI() {
+            const container = document.getElementById('user-header-auth');
+            if (state.currentUser) {
+                container.innerHTML = `
+                    <button onclick="navigateTo('dashboard')" class="flex items-center gap-2 p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                        <div class="w-7 h-7 rounded-full bg-blue-600 text-white text-xs font-bold flex items-center justify-center">
+                            ${state.currentUser.name.charAt(0)}
+                        </div>
+                        <span class="text-xs font-medium dark:text-gray-200 hidden md:inline">${state.currentUser.name}</span>
+                    </button>
+                    <button onclick="logoutUser()" class="text-xs text-gray-500 hover:text-red-500 p-1.5" title="Logout"><i class="fas fa-sign-out-alt"></i></button>
+                `;
+            } else {
+                container.innerHTML = `
+                    <button onclick="navigateTo('dashboard')" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white transition-colors">
+                        Sign In / Register
+                    </button>
+                `;
+            }
+        }
+
+        function logoutUser() {
+            localStorage.removeItem('maii_user');
+            state.currentUser = null;
+            updateHeaderAuthUI();
+            showToast("Logged out successfully");
+            navigateTo('home');
+        }
+
+        function renderView() {
+            const container = document.getElementById('app-container');
+            
+            switch (state.currentRoute) {
+                case 'home':
+                    container.innerHTML = renderHomeView();
+                    break;
+                case 'digital-marketing':
+                    container.innerHTML = renderCategoryView('Digital Marketing');
+                    break;
+                case 'seo-hub':
+                    container.innerHTML = renderCategoryView('SEO');
+                    break;
+                case 'ai-hub':
+                    container.innerHTML = renderCategoryView('AI');
+                    break;
+                case 'articles':
+                    container.innerHTML = renderCategoryView('All');
+                    break;
+                case 'article':
+                    container.innerHTML = renderSingleArticleView(state.routeParam);
+                    break;
+                case 'ai-tools':
+                    container.innerHTML = renderToolsDirectoryView('AI Tools');
+                    break;
+                case 'marketing-tools':
+                    container.innerHTML = renderToolsDirectoryView('Marketing Tools');
+                    break;
+                case 'free-tools':
+                    container.innerHTML = renderFreeSEOUtilitiesView();
+                    break;
+                case 'ai-generators':
+                    container.innerHTML = renderAIGeneratorsView();
+                    break;
+                case 'dashboard':
+                    container.innerHTML = renderDashboardView();
+                    break;
+                case 'about':
+                    container.innerHTML = renderAboutView();
+                    break;
+                case 'contact':
+                    container.innerHTML = renderContactView();
+                    break;
+                default:
+                    container.innerHTML = renderHomeView();
+            }
+        }
+
+        function renderHomeView() {
+            const featured = state.articles[0] || initialArticles[0];
+            const recent = state.articles.slice(1);
+
+            return `
+                <!-- Hero Section -->
+                <section class="mb-12">
+                    <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-900 via-indigo-900 to-purple-950 text-white p-8 sm:p-12 shadow-2xl">
+                        <div class="relative z-10 max-w-2xl">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-500/20 text-blue-300 border border-blue-400/30 mb-4">
+                                <i class="fas fa-sparkles text-xs"></i> Strategic Intelligence 2026
+                            </span>
+                            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight mb-4">
+                                Mastering Marketing, AI & Generative Search
+                            </h1>
+                            <p class="text-gray-300 text-sm sm:text-base mb-6 leading-relaxed">
+                                Actionable guides, interactive SEO utilities, AI content generators, and real-time tool directories built for growth strategists.
+                            </p>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="#free-tools" onclick="navigateTo('free-tools')" class="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs sm:text-sm shadow-lg shadow-blue-600/30 transition-all">
+                                    Explore Free SEO Tools
+                                </a>
+                                <a href="#ai-generators" onclick="navigateTo('ai-generators')" class="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs sm:text-sm border border-white/20 backdrop-blur-sm transition-all">
+                                    Try AI Generators
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Featured Article -->
+                ${featured ? `
+                <section class="mb-12">
+                    <h2 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">Featured Story</h2>
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-white dark:bg-gray-900 rounded-2xl p-6 border border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="lg:col-span-7">
+                            <img src="${featured.coverImage}" alt="${featured.title}" class="w-full h-64 sm:h-80 object-cover rounded-xl">
+                        </div>
+                        <div class="lg:col-span-5 flex flex-col justify-between">
+                            <div>
+                                <span class="px-2.5 py-1 rounded-md text-xs font-bold bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300 mb-3 inline-block">${featured.category}</span>
+                                <a href="#article/${featured.slug}" onclick="navigateTo('article', '${featured.slug}')" class="block group">
+                                    <h3 class="text-2xl font-bold mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">${featured.title}</h3>
+                                </a>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm line-clamp-3 mb-4">${featured.excerpt}</p>
+                            </div>
+                            <div class="flex items-center justify-between border-t border-gray-100 dark:border-gray-800 pt-4">
+                                <div class="flex items-center gap-3">
+                                    <img src="${featured.authorAvatar}" alt="${featured.authorName}" class="w-8 h-8 rounded-full">
+                                    <div>
+                                        <p class="text-xs font-bold">${featured.authorName}</p>
+                                        <p class="text-[10px] text-gray-500">${featured.date} • ${featured.readTime}</p>
+                                    </div>
+                                </div>
+                                <a href="#article/${featured.slug}" onclick="navigateTo('article', '${featured.slug}')" class="text-xs font-bold text-blue-600 hover:text-blue-700">Read Article <i class="fas fa-arrow-right ml-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                ` : ''}
+
+                <!-- Utilities Quick Launch Grid -->
+                <section class="mb-12">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h2 class="text-xl font-bold">10 In-Browser Free SEO Utilities</h2>
+                            <p class="text-xs text-gray-500">Instant tools with no registration required</p>
+                        </div>
+                        <a href="#free-tools" onclick="navigateTo('free-tools')" class="text-xs font-bold text-blue-600 hover:underline">View All Tools <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+                        ${renderUtilityShortcutCard("Meta Title & Desc", "fa-heading", "seo-meta")}
+                        ${renderUtilityShortcutCard("Google SERP Preview", "fa-search", "seo-serp")}
+                        ${renderUtilityShortcutCard("Word & Char Counter", "fa-calculator", "seo-counter")}
+                        ${renderUtilityShortcutCard("Keyword Density", "fa-percentage", "seo-density")}
+                        ${renderUtilityShortcutCard("SEO Slug Generator", "fa-link", "seo-slug")}
+                        ${renderUtilityShortcutCard("UTM Campaign Builder", "fa-tags", "seo-utm")}
+                        ${renderUtilityShortcutCard("JSON-LD Schema", "fa-code", "seo-schema")}
+                        ${renderUtilityShortcutCard("Robots.txt Generator", "fa-robot", "seo-robots")}
+                        ${renderUtilityShortcutCard("XML Sitemap Builder", "fa-sitemap", "seo-sitemap")}
+                        ${renderUtilityShortcutCard("Readability Checker", "fa-file-alt", "seo-readability")}
+                    </div>
+                </section>
+
+                <!-- Latest Articles Grid -->
+                <section class="mb-12">
+                    <h2 class="text-xl font-bold mb-6">Latest Articles & Guides</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        ${recent.map(art => renderArticleCard(art)).join('')}
+                    </div>
+                </section>
+            `;
+        }
+
+        function renderUtilityShortcutCard(title, icon, toolId) {
+            return `
+                <div onclick="navigateTo('free-tools', '${toolId}')" class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-4 cursor-pointer hover:border-blue-500 hover:shadow-md transition-all text-center group">
+                    <div class="w-10 h-10 rounded-lg bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 mx-auto flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                        <i class="fas ${icon} text-lg"></i>
+                    </div>
+                    <h4 class="text-xs font-bold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">${title}</h4>
+                </div>
+            `;
+        }
+
+        function renderArticleCard(article) {
+            return `
+                <article class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="${article.coverImage}" alt="${article.title}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                            <span class="absolute top-3 left-3 bg-white/90 dark:bg-gray-900/90 text-gray-900 dark:text-gray-100 text-[10px] font-bold px-2.5 py-1 rounded-md backdrop-blur-sm">${article.category}</span>
+                        </div>
+                        <div class="p-5">
+                            <a href="#article/${article.slug}" onclick="navigateTo('article', '${article.slug}')">
+                                <h3 class="text-base font-bold mb-2 line-clamp-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">${article.title}</h3>
+                            </a>
+                            <p class="text-xs text-gray-600 dark:text-gray-400 line-clamp-3 mb-4">${article.excerpt}</p>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-5 pt-0 border-t border-gray-100 dark:border-gray-800/50 flex items-center justify-between text-xs text-gray-500 mt-2">
+                        <span class="font-medium">${article.authorName}</span>
+                        <span>${article.readTime}</span>
+                    </div>
+                </article>
+            `;
+        }
+
+        function renderCategoryView(categoryName) {
+            const filtered = categoryName === 'All' 
+                ? state.articles 
+                : state.articles.filter(a => a.category.toLowerCase() === categoryName.toLowerCase());
+
+            return `
+                <div class="mb-8">
+                    <h1 class="text-3xl font-extrabold mb-2">${categoryName} Hub</h1>
+                    <p class="text-sm text-gray-500">Curated intelligence and strategic insights in ${categoryName}.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    ${filtered.length > 0 
+                        ? filtered.map(art => renderArticleCard(art)).join('') 
+                        : `<p class="col-span-full text-center py-12 text-gray-400">No articles published in this category yet.</p>`
+                    }
+                </div>
+            `;
+        }
+
+        function renderSingleArticleView(slug) {
+            const article = state.articles.find(a => a.slug === slug) || state.articles[0];
+            if (!article) return `<p class="py-12 text-center">Article not found.</p>`;
+
+            return `
+                <article class="max-w-4xl mx-auto">
+                    <!-- Header -->
+                    <div class="mb-8 text-center">
+                        <span class="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300 inline-block mb-4">${article.category}</span>
+                        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4 leading-tight">${article.title}</h1>
+                        <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">${article.excerpt}</p>
+                        
+                        <div class="flex items-center justify-center gap-4 text-xs text-gray-500 border-y border-gray-200 dark:border-gray-800 py-4">
+                            <div class="flex items-center gap-2">
+                                <img src="${article.authorAvatar}" class="w-8 h-8 rounded-full">
+                                <span class="font-bold text-gray-900 dark:text-gray-100">${article.authorName}</span>
+                            </div>
+                            <span>•</span>
+                            <span>${article.date}</span>
+                            <span>•</span>
+                            <span>${article.readTime}</span>
+                        </div>
+                    </div>
+
+                    <!-- Cover Image -->
+                    <img src="${article.coverImage}" alt="${article.title}" class="w-full h-80 sm:h-96 object-cover rounded-2xl mb-8 shadow-lg">
+
+                    <!-- Content Layout with Table of Contents -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                        <div class="lg:col-span-8">
+                            <div class="article-content text-base sm:text-lg text-gray-800 dark:text-gray-200 space-y-6">
+                                ${article.content}
+                            </div>
+
+                            <!-- Article Share Bar featuring Instagram -->
+                            <div class="border-t border-gray-200 dark:border-gray-800 mt-12 pt-6 flex items-center justify-between">
+                                <span class="text-xs font-bold text-gray-500 uppercase">Share this article:</span>
+                                <div class="flex items-center gap-3">
+                                    <button onclick="shareLink('instagram')" class="w-9 h-9 rounded-full bg-pink-600 text-white flex items-center justify-center hover:opacity-90"><i class="fab fa-instagram"></i></button>
+                                    <button onclick="shareLink('twitter')" class="w-9 h-9 rounded-full bg-sky-500 text-white flex items-center justify-center hover:opacity-90"><i class="fab fa-x-twitter"></i></button>
+                                    <button onclick="shareLink('linkedin')" class="w-9 h-9 rounded-full bg-blue-700 text-white flex items-center justify-center hover:opacity-90"><i class="fab fa-linkedin-in"></i></button>
+                                    <button onclick="shareLink('copy')" class="w-9 h-9 rounded-full bg-gray-700 text-white flex items-center justify-center hover:opacity-90" title="Copy Link"><i class="fas fa-link"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sidebar -->
+                        <div class="lg:col-span-4 space-y-6">
+                            <div class="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-800 sticky top-24">
+                                <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">About Author</h3>
+                                <div class="flex items-center gap-3 mb-3">
+                                    <img src="${article.authorAvatar}" class="w-12 h-12 rounded-full">
+                                    <div>
+                                        <h4 class="font-bold text-sm">${article.authorName}</h4>
+                                        <p class="text-xs text-gray-500">Verified Contributor</p>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-gray-600 dark:text-gray-400 mb-4">Specializing in AI strategy, Generative Search Optimization, and growth marketing frameworks.</p>
+                                <a href="https://instagram.com" target="_blank" class="inline-flex items-center gap-1.5 text-xs text-pink-600 font-semibold hover:underline">
+                                    <i class="fab fa-instagram"></i> Follow on Instagram
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            `;
+        }
+
+        function shareLink(platform) {
+            if (platform === 'copy') {
+                navigator.clipboard.writeText(window.location.href);
+                showToast("Article URL copied to clipboard!");
+            } else {
+                showToast(`Sharing to ${platform.toUpperCase()}...`);
+            }
+        }
+
+        function renderDashboardView() {
+            if (!state.currentUser) {
+                return renderAuthModal();
+            }
+
+            const myArticles = state.articles.filter(a => a.authorId === state.currentUser.id);
+
+            return `
+                <div class="space-y-8">
+                    <!-- Dashboard Header -->
+                    <div class="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-blue-600 text-white font-bold text-xl flex items-center justify-center">
+                                ${state.currentUser.name.charAt(0)}
+                            </div>
+                            <div>
+                                <h1 class="text-xl font-bold">${state.currentUser.name}</h1>
+                                <p class="text-xs text-gray-500">${state.currentUser.email} • ${state.currentUser.role || 'Author'}</p>
+                            </div>
+                        </div>
+                        <button onclick="logoutUser()" class="text-xs px-4 py-2 rounded-xl bg-red-50 text-red-600 dark:bg-red-950/50 dark:text-red-400 font-semibold hover:bg-red-100 transition-colors">
+                            <i class="fas fa-sign-out-alt mr-1"></i> Sign Out
+                        </button>
+                    </div>
+
+                    <!-- Dashboard Tabs / Write Form -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                        <!-- Write Article Form -->
+                        <div class="lg:col-span-7 bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-800">
+                            <h2 class="text-lg font-bold mb-4 flex items-center gap-2">
+                                <i class="fas fa-pen-nib text-blue-600"></i> Write & Publish Article
+                            </h2>
+                            <form onsubmit="handlePublishArticle(event)" class="space-y-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">Article Title</label>
+                                    <input type="text" id="post-title" required onkeyup="autoGenerateSlug(this.value)" placeholder="e.g. Master Generative Engine Optimization in 2026" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-transparent text-sm focus:outline-none focus:border-blue-600">
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">URL Slug</label>
+                                        <input type="text" id="post-slug" required placeholder="article-url-slug" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-transparent text-xs text-gray-500 focus:outline-none">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">Category</label>
+                                        <select id="post-category" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-transparent text-xs focus:outline-none dark:bg-gray-900">
+                                            <option value="SEO">SEO</option>
+                                            <option value="AI">AI</option>
+                                            <option value="Digital Marketing">Digital Marketing</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">Short Excerpt</label>
+                                    <textarea id="post-excerpt" rows="2" required placeholder="Brief summary of your article..." class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-transparent text-sm focus:outline-none focus:border-blue-600"></textarea>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">Cover Image URL</label>
+                                    <input type="url" id="post-image" placeholder="https://images.unsplash.com/..." class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-transparent text-sm focus:outline-none">
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">Article Body Content (HTML / Text)</label>
+                                    <textarea id="post-content" rows="8" required placeholder="<p>Write your article content here...</p>" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-transparent text-sm font-mono focus:outline-none focus:border-blue-600"></textarea>
+                                </div>
+
+                                <button type="submit" class="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-lg shadow-blue-600/30 transition-all">
+                                    Publish Article Immediately
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- My Articles List (Privacy Access Control) -->
+                        <div class="lg:col-span-5 bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-800">
+                            <h2 class="text-lg font-bold mb-4 flex items-center justify-between">
+                                <span>My Published Articles</span>
+                                <span class="text-xs bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-400 font-bold px-2.5 py-1 rounded-full">${myArticles.length}</span>
+                            </h2>
+                            <p class="text-xs text-gray-500 mb-4">Privacy Control: You can only view, edit or manage content authored by your account.</p>
+
+                            <div class="space-y-3 max-h-[500px] overflow-y-auto custom-scrollbar">
+                                ${myArticles.length > 0 ? myArticles.map(art => `
+                                    <div class="p-3 rounded-xl border border-gray-100 dark:border-gray-800 hover:border-gray-300 transition-colors flex items-center justify-between gap-3">
+                                        <div class="truncate">
+                                            <h4 class="text-xs font-bold truncate">${art.title}</h4>
+                                            <span class="text-[10px] text-gray-400">${art.date} • ${art.category}</span>
+                                        </div>
+                                        <div class="flex items-center gap-2 flex-shrink-0">
+                                            <a href="#article/${art.slug}" onclick="navigateTo('article', '${art.slug}')" class="text-xs text-blue-600 hover:underline"><i class="fas fa-eye"></i></a>
+                                            <button onclick="deleteMyArticle('${art.id}')" class="text-xs text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </div>
+                                `).join('') : `<p class="text-xs text-gray-400 py-6 text-center">You haven't authored any articles yet.</p>`}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderAuthModal() {
+            return `
+                <div class="max-w-md mx-auto bg-white dark:bg-gray-900 p-8 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-2xl">
+                    <div class="text-center mb-6">
+                        <div class="w-12 h-12 rounded-xl bg-blue-600 text-white mx-auto flex items-center justify-center text-xl font-bold mb-3">
+                            <i class="fas fa-user-lock"></i>
+                        </div>
+                        <h2 class="text-xl font-bold">Author Access & Registration</h2>
+                        <p class="text-xs text-gray-500">Sign in or register to publish articles on MAII</p>
+                    </div>
+
+                    <form onsubmit="handleUserAuth(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold mb-1">Full Name</label>
+                            <input type="text" id="auth-name" required placeholder="e.g. Sarah Jenkins" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-transparent text-sm focus:outline-none focus:border-blue-600">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold mb-1">Email Address</label>
+                            <input type="email" id="auth-email" required placeholder="sarah@example.com" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-transparent text-sm focus:outline-none focus:border-blue-600">
+                        </div>
+                        <button type="submit" class="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-lg shadow-blue-600/30 transition-all">
+                            Sign In / Create Account
+                        </button>
+                    </form>
+                </div>
+            `;
+        }
+
+        function autoGenerateSlug(title) {
+            const slug = title.toLowerCase().replace(/[^a-z0-9 -]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-');
+            document.getElementById('post-slug').value = slug;
+        }
+
+        function handleUserAuth(e) {
+            e.preventDefault();
+            const name = document.getElementById('auth-name').value;
+            const email = document.getElementById('auth-email').value;
+
+            const user = {
+                id: 'usr-' + Date.now(),
+                name: name,
+                email: email,
+                role: 'Contributing Author'
+            };
+
+            saveUser(user);
+            showToast(`Welcome back, ${name}!`);
+            renderView();
+        }
+
+        function handlePublishArticle(e) {
+            e.preventDefault();
+            if (!state.currentUser) return;
+
+            const newArticle = {
+                id: 'art-' + Date.now(),
+                title: document.getElementById('post-title').value,
+                slug: document.getElementById('post-slug').value || ('art-' + Date.now()),
+                category: document.getElementById('post-category').value,
+                excerpt: document.getElementById('post-excerpt').value,
+                coverImage: document.getElementById('post-image').value || "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&fit=crop",
+                content: document.getElementById('post-content').value,
+                authorId: state.currentUser.id,
+                authorName: state.currentUser.name,
+                authorAvatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop",
+                date: new Date().toISOString().split('T')[0],
+                readTime: "4 min read"
+            };
+
+            state.articles.unshift(newArticle);
+            saveArticles();
+            showToast("Article published successfully!");
+            renderView();
+        }
+
+        function deleteMyArticle(id) {
+            state.articles = state.articles.filter(a => a.id !== id);
+            saveArticles();
+            showToast("Article deleted");
+            renderView();
+        }
+
+        function renderFreeSEOUtilitiesView() {
+            return `
+                <div class="mb-8">
+                    <h1 class="text-3xl font-extrabold mb-2">10 Free In-Browser SEO Utilities</h1>
+                    <p class="text-sm text-gray-500">Fast, functional client-side SEO tools. No subscriptions or backend required.</p>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- 1. Title & Meta Description Generator -->
+                    <div id="seo-meta" class="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-800">
+                        <h3 class="text-lg font-bold mb-4 flex items-center gap-2"><i class="fas fa-heading text-blue-600"></i> 1. Meta Title & Description Counter</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold mb-1">Meta Title (<span id="title-count">0</span> / 60 chars)</label>
+                                <input type="text" id="meta-title-input" onkeyup="updateMetaCounts()" placeholder="Enter page title..." class="w-full p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-transparent text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold mb-1">Meta Description (<span id="desc-count">0</span> / 160 chars)</label>
+                                <textarea id="meta-desc-input" onkeyup="updateMetaCounts()" rows="2" placeholder="Enter meta description..." class="w-full p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-transparent text-sm"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Google SERP Live Preview -->
+                    <div id="seo-serp" class="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-800">
+                        <h3 class="text-lg font-bold mb-4 flex items-center gap-2"><i class="fas fa-search text-blue-600"></i> 2. Google SERP Live Simulator</h3>
+                        <div class="bg-gray-50 dark:bg-gray-950 p-4 rounded-xl border border-gray-200 dark:border-gray-800 font-sans">
+                            <span class="text-xs text-gray-400 block mb-1">https://maii.ai › <span id="serp-slug-preview">your-slug</span></span>
+                            <h4 id="serp-title-preview" class="text-blue-700 dark:text-blue-400 text-lg hover:underline font-normal truncate">Your Article Title Will Render Here</h4>
+                            <p id="serp-desc-preview" class="text-xs text-gray-600 dark:text-gray-300 line-clamp-2 mt-1">Your meta description preview will update here in real-time as you type in the tools above.</p>
+                        </div>
+                    </div>
+
+                    <!-- 3. Word & Character Counter -->
+                    <div id="seo-counter" class="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-800">
+                        <h3 class="text-lg font-bold mb-4 flex items-center gap-2"><i class="fas fa-calculator text-blue-600"></i> 3. Word & Character Counter</h3>
+                        <textarea id="word-count-input" onkeyup="calculateWordStats()" rows="4" placeholder="Paste text here to analyze statistics..." class="w-full p-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-transparent text-sm mb-3"></textarea>
+                        <div class="grid grid-cols-4 gap-2 text-center text-xs">
+                            <div class="bg-gray-100 dark:bg-gray-800 p-2 rounded-lg"><span id="stat-words" class="block font-bold text-base">0</span> Words</div>
+                            <div class="bg-gray-100 dark:bg-gray-800 p-2 rounded-lg"><span id="stat-chars" class="block font-bold text-base">0</span> Chars</div>
+                            <div class="bg-gray-100 dark:bg-gray-800 p-2 rounded-lg"><span id="stat-sentences" class="block font-bold text-base">0</span> Sentences</div>
+                            <div class="bg-gray-100 dark:bg-gray-800 p-2 rounded-lg"><span id="stat-reading" class="block font-bold text-base">0 min</span> Read Time</div>
+                        </div>
+                    </div>
+
+                    <!-- 4. Keyword Density Analyzer -->
+                    <div id="seo-density" class="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-800">
+                        <h3 class="text-lg font-bold mb-4 flex items-center gap-2"><i class="fas fa-percentage text-blue-600"></i> 4. Keyword Density Analyzer</h3>
+                        <div class="flex gap-2 mb-3">
+                            <input type="text" id="density-target" placeholder="Target Keyword" class="p-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-transparent text-xs w-1/3">
+                            <button onclick="calculateDensity()" class="px-4 py-2 rounded-xl bg-blue-600 text-white text-xs font-bold">Analyze Text Above</button>
+                        </div>
+                        <div id="density-result" class="text-xs text-gray-500 font-mono"></div>
+                    </div>
+
+                    <!-- 5. SEO Slug Generator -->
+                    <div id="seo-slug" class="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-800">
+                        <h3 class="text-lg font-bold mb-4 flex items-center gap-2"><i class="fas fa-link text-blue-600"></i> 5. URL Slug Generator</h3>
+                        <input type="text" id="slug-raw" onkeyup="generateCleanSlug(this.value)" placeholder="Enter raw headline e.g. What is AI Marketing?" class="w-full p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-transparent text-sm mb-2">
+                        <input type="text" id="slug-clean" readonly class="w-full p-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 text-xs font-mono text-blue-600 dark:text-blue-400">
+                    </div>
+
+                    <!-- 6. UTM Builder -->
+                    <div id="seo-utm" class="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-800">
+                        <h3 class="text-lg font-bold mb-4 flex items-center gap-2"><i class="fas fa-tags text-blue-600"></i> 6. Campaign UTM Builder</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-3">
+                            <input type="url" id="utm-url" placeholder="Website URL" class="p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-transparent text-xs">
+                            <input type="text" id="utm-source" placeholder="Source (e.g. instagram)" class="p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-transparent text-xs">
+                            <input type="text" id="utm-medium" placeholder="Medium (e.g. social)" class="p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-transparent text-xs">
+                        </div>
+                        <button onclick="buildUTMUrl()" class="px-4 py-2 rounded-xl bg-blue-600 text-white text-xs font-bold mb-2">Build UTM URL</button>
+                        <input type="text" id="utm-result" readonly class="w-full p-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 text-xs font-mono text-emerald-600">
+                    </div>
+
+                    <!-- 7. JSON-LD Schema Generator -->
+                    <div id="seo-schema" class="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-800">
+                        <h3 class="text-lg font-bold mb-4 flex items-center gap-2"><i class="fas fa-code text-blue-600"></i> 7. Article JSON-LD Schema Generator</h3>
+                        <button onclick="generateArticleSchema()" class="px-4 py-2 rounded-xl bg-blue-600 text-white text-xs font-bold mb-3">Generate Schema Code</button>
+                        <pre id="schema-output" class="p-3 bg-gray-950 text-emerald-400 rounded-xl text-xs overflow-x-auto font-mono">{ "// JSON-LD output will display here" }</pre>
+                    </div>
+
+                    <!-- 8. Robots.txt Generator -->
+                    <div id="seo-robots" class="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-800">
+                        <h3 class="text-lg font-bold mb-4 flex items-center gap-2"><i class="fas fa-robot text-blue-600"></i> 8. Robots.txt File Generator</h3>
+                        <textarea id="robots-output" rows="4" class="w-full p-3 bg-gray-950 text-gray-200 rounded-xl text-xs font-mono mb-2">User-agent: *
+Disallow: /admin/
+Disallow: /private/
+Sitemap: https://maii.ai/sitemap.xml</textarea>
+                        <button onclick="copyToClipboard('robots-output')" class="px-4 py-2 rounded-xl bg-gray-800 text-white text-xs font-bold">Copy Robots.txt</button>
+                    </div>
+
+                    <!-- 9. XML Sitemap Generator -->
+                    <div id="seo-sitemap" class="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-800">
+                        <h3 class="text-lg font-bold mb-4 flex items-center gap-2"><i class="fas fa-sitemap text-blue-600"></i> 9. XML Sitemap Generator</h3>
+                        <button onclick="generateXMLSitemap()" class="px-4 py-2 rounded-xl bg-blue-600 text-white text-xs font-bold mb-3">Generate XML Sitemap for Published Articles</button>
+                        <textarea id="sitemap-output" rows="4" readonly class="w-full p-3 bg-gray-950 text-indigo-400 rounded-xl text-xs font-mono"></textarea>
+                    </div>
+
+                    <!-- 10. Readability Checker -->
+                    <div id="seo-readability" class="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-800">
+                        <h3 class="text-lg font-bold mb-4 flex items-center gap-2"><i class="fas fa-file-alt text-blue-600"></i> 10. Readability Score Checker</h3>
+                        <button onclick="checkReadability()" class="px-4 py-2 rounded-xl bg-blue-600 text-white text-xs font-bold mb-2">Check Text Readability</button>
+                        <p id="readability-result" class="text-xs font-bold text-gray-600 dark:text-gray-300"></p>
+                    </div>
+                </div>
+            `;
+        }
+
+        /* SEO Utility Execution Functions */
+        function updateMetaCounts() {
+            const title = document.getElementById('meta-title-input').value;
+            const desc = document.getElementById('meta-desc-input').value;
+            
+            document.getElementById('title-count').innerText = title.length;
+            document.getElementById('desc-count').innerText = desc.length;
+
+            document.getElementById('serp-title-preview').innerText = title || "Your Article Title Will Render Here";
+            document.getElementById('serp-desc-preview').innerText = desc || "Your meta description preview will update here in real-time as you type in the tools above.";
+        }
+
+        function calculateWordStats() {
+            const text = document.getElementById('word-count-input').value.trim();
+            const words = text ? text.split(/\s+/).length : 0;
+            const chars = text.length;
+            const sentences = text ? text.split(/[.!?]+/).filter(Boolean).length : 0;
+            const readTime = Math.ceil(words / 200);
+
+            document.getElementById('stat-words').innerText = words;
+            document.getElementById('stat-chars').innerText = chars;
+            document.getElementById('stat-sentences').innerText = sentences;
+            document.getElementById('stat-reading').innerText = `${readTime} min`;
+        }
+
+        function calculateDensity() {
+            const text = document.getElementById('word-count-input').value.toLowerCase();
+            const target = document.getElementById('density-target').value.toLowerCase();
+            if (!text || !target) return;
+
+            const matches = text.split(target).length - 1;
+            const totalWords = text.split(/\s+/).length;
+            const density = ((matches / totalWords) * 100).toFixed(2);
+
+            document.getElementById('density-result').innerText = `Keyword "${target}" appears ${matches} times (${density}% density).`;
+        }
+
+        function generateCleanSlug(text) {
+            const slug = text.toLowerCase().replace(/[^a-z0-9 -]/g, '').replace(/\s+/g, '-');
+            document.getElementById('slug-clean').value = slug;
+            document.getElementById('serp-slug-preview').innerText = slug || 'your-slug';
+        }
+
+        function buildUTMUrl() {
+            const url = document.getElementById('utm-url').value;
+            const source = document.getElementById('utm-source').value;
+            const medium = document.getElementById('utm-medium').value;
+            document.getElementById('utm-result').value = `${url}?utm_source=${source}&utm_medium=${medium}&utm_campaign=maii_growth`;
+        }
+
+        function generateArticleSchema() {
+            const schema = {
+                "@context": "https://schema.org",
+                "@type": "Article",
+                "headline": document.getElementById('meta-title-input').value || "Sample Article Title",
+                "description": document.getElementById('meta-desc-input').value || "Sample Description",
+                "author": {
+                    "@type": "Person",
+                    "name": state.currentUser ? state.currentUser.name : "MAII Author"
+                }
+            };
+            document.getElementById('schema-output').innerText = JSON.stringify(schema, null, 2);
+        }
+
+        function generateXMLSitemap() {
+            const urls = state.articles.map(a => `  <url><loc>https://maii.ai/#article/${a.slug}</loc><lastmod>${a.date}</lastmod></url>`).join('\n');
+            const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>`;
+            document.getElementById('sitemap-output').value = xml;
+        }
+
+        function checkReadability() {
+            const text = document.getElementById('word-count-input').value;
+            if (!text) return;
+            const words = text.split(/\s+/).length;
+            const sentences = text.split(/[.!?]+/).filter(Boolean).length;
+            const score = Math.round(206.835 - 1.015 * (words / (sentences || 1)));
+            document.getElementById('readability-result').innerText = `Readability Score: ${score} / 100 (Grade Level: ${score > 60 ? 'Standard / Easy' : 'Advanced academic'})`;
+        }
+
+        function copyToClipboard(id) {
+            const copyText = document.getElementById(id);
+            copyText.select();
+            document.execCommand("copy");
+            showToast("Copied to clipboard!");
+        }
+
+        function renderAIGeneratorsView() {
+            return `
+                <div class="mb-8">
+                    <h1 class="text-3xl font-extrabold mb-2">5 AI Marketing Content Generators</h1>
+                    <p class="text-sm text-gray-500">Generate outlines, headlines, meta data, and briefs instantly.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Generator 1 -->
+                    <div class="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-800">
+                        <h3 class="text-base font-bold mb-3"><i class="fas fa-list text-purple-600"></i> AI Blog Outline Generator</h3>
+                        <input type="text" id="ai-topic-1" placeholder="Topic e.g. SaaS Growth Marketing" class="w-full p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-transparent text-xs mb-3">
+                        <button onclick="runAIGenerator(1)" class="w-full py-2 rounded-xl bg-purple-600 text-white font-bold text-xs mb-3">Generate Blog Outline</button>
+                        <div id="ai-out-1" class="p-3 bg-gray-50 dark:bg-gray-950 rounded-xl text-xs font-mono min-h-[100px] whitespace-pre-line"></div>
+                    </div>
+
+                    <!-- Generator 2 -->
+                    <div class="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-800">
+                        <h3 class="text-base font-bold mb-3"><i class="fas fa-magic text-purple-600"></i> AI Headline & Title Generator</h3>
+                        <input type="text" id="ai-topic-2" placeholder="Keyword e.g. Generative Search SEO" class="w-full p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-transparent text-xs mb-3">
+                        <button onclick="runAIGenerator(2)" class="w-full py-2 rounded-xl bg-purple-600 text-white font-bold text-xs mb-3">Generate Catchy Titles</button>
+                        <div id="ai-out-2" class="p-3 bg-gray-50 dark:bg-gray-950 rounded-xl text-xs font-mono min-h-[100px] whitespace-pre-line"></div>
+                    </div>
+
+                    <!-- Generator 3 -->
+                    <div class="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-800">
+                        <h3 class="text-base font-bold mb-3"><i class="fas fa-align-left text-purple-600"></i> AI Meta Description Generator</h3>
+                        <input type="text" id="ai-topic-3" placeholder="Article summary..." class="w-full p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-transparent text-xs mb-3">
+                        <button onclick="runAIGenerator(3)" class="w-full py-2 rounded-xl bg-purple-600 text-white font-bold text-xs mb-3">Generate Meta Description</button>
+                        <div id="ai-out-3" class="p-3 bg-gray-50 dark:bg-gray-950 rounded-xl text-xs font-mono min-h-[100px] whitespace-pre-line"></div>
+                    </div>
+
+                    <!-- Generator 4 -->
+                    <div class="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-800">
+                        <h3 class="text-base font-bold mb-3"><i class="fas fa-file-contract text-purple-600"></i> AI Content Brief Builder</h3>
+                        <input type="text" id="ai-topic-4" placeholder="Target Keyword e.g. AI Marketing Tools" class="w-full p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-transparent text-xs mb-3">
+                        <button onclick="runAIGenerator(4)" class="w-full py-2 rounded-xl bg-purple-600 text-white font-bold text-xs mb-3">Generate Brief</button>
+                        <div id="ai-out-4" class="p-3 bg-gray-50 dark:bg-gray-950 rounded-xl text-xs font-mono min-h-[100px] whitespace-pre-line"></div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function runAIGenerator(num) {
+            const input = document.getElementById(`ai-topic-${num}`).value || "Marketing AI";
+            const out = document.getElementById(`ai-out-${num}`);
+            out.innerText = "Generating AI intelligence response...";
+
+            setTimeout(() => {
+                if (num === 1) {
+                    out.innerText = `1. Introduction: The Evolution of ${input}\n2. Core Pillars & Strategy\n3. Actionable Implementation Steps\n4. Tools & Software Comparison\n5. Final Recommendations`;
+                } else if (num === 2) {
+                    out.innerText = `1. The Ultimate Guide to ${input} in 2026\n2. 10 Surprising Ways ${input} Can Double Growth\n3. Why ${input} Is the Future of Modern Strategy`;
+                } else if (num === 3) {
+                    out.innerText = `Discover how ${input} transforms digital strategy. Explore actionable frameworks, live statistics, and expert tools in our comprehensive guide.`;
+                } else if (num === 4) {
+                    out.innerText = `Target Keyword: ${input}\nTarget Audience: CMOs & Growth Lead\nSuggested Word Count: 1,800 Words\nKey Questions to Answer: What are benefits? How to implement?`;
+                }
+            }, 500);
+        }
+
+        function renderToolsDirectoryView(toolType) {
+            const filtered = state.tools.filter(t => t.type === toolType);
+
+            return `
+                <div class="mb-8">
+                    <h1 class="text-3xl font-extrabold mb-2">${toolType} Directory</h1>
+                    <p class="text-sm text-gray-500">Curated and verified digital software for marketing teams.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    ${filtered.map(t => `
+                        <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 shadow-sm flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="text-xs font-bold px-2.5 py-1 rounded-md bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400">${t.category}</span>
+                                    <span class="text-xs font-semibold text-gray-400"><i class="fas fa-star text-amber-400 mr-1"></i>${t.rating}</span>
+                                </div>
+                                <h3 class="text-lg font-bold mb-2">${t.name}</h3>
+                                <p class="text-xs text-gray-600 dark:text-gray-400 mb-4">${t.description}</p>
+                            </div>
+                            <div class="flex items-center justify-between border-t border-gray-100 dark:border-gray-800 pt-4">
+                                <span class="text-xs font-bold text-gray-500">${t.price}</span>
+                                <a href="${t.link}" target="_blank" rel="noopener" class="text-xs font-bold px-4 py-2 rounded-xl bg-gray-900 text-white dark:bg-gray-100 dark:text-gray-900 hover:opacity-90">Visit Tool <i class="fas fa-external-link-alt ml-1 text-[10px]"></i></a>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function renderAboutView() {
+            return `
+                <div class="max-w-3xl mx-auto bg-white dark:bg-gray-900 p-8 rounded-2xl border border-gray-200 dark:border-gray-800 space-y-4">
+                    <h1 class="text-3xl font-bold">About Marketing AI Intelligence (MAII)</h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                        MAII was created to bridge the gap between AI breakthrough engineering and actionable digital marketing execution. We deliver real-time SEO utilities, AI tools directories, and expert publication frameworks.
+                    </p>
+                </div>
+            `;
+        }
+
+        function renderContactView() {
+            return `
+                <div class="max-w-lg mx-auto bg-white dark:bg-gray-900 p-8 rounded-2xl border border-gray-200 dark:border-gray-800">
+                    <h1 class="text-2xl font-bold mb-4">Contact MAII Editorial</h1>
+                    <form onsubmit="event.preventDefault(); showToast('Message sent to editorial team!');" class="space-y-4">
+                        <input type="text" required placeholder="Your Name" class="w-full p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-transparent text-xs">
+                        <input type="email" required placeholder="Your Email" class="w-full p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-transparent text-xs">
+                        <textarea rows="4" required placeholder="Your Message..." class="w-full p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-transparent text-xs"></textarea>
+                        <button type="submit" class="w-full py-2.5 rounded-xl bg-blue-600 text-white text-xs font-bold">Send Message</button>
+                    </form>
+                </div>
+            `;
+        }
+
+        /* Live Search Logic */
+        function handleLiveSearch(query) {
+            const resultsContainer = document.getElementById('search-results');
+            if (!query.trim()) {
+                resultsContainer.innerHTML = `<p class="text-xs text-gray-400 text-center py-4">Start typing to search across all content and tools...</p>`;
+                return;
+            }
+
+            const q = query.toLowerCase();
+            const matchedArticles = state.articles.filter(a => a.title.toLowerCase().includes(q) || a.excerpt.toLowerCase().includes(q));
+            const matchedTools = state.tools.filter(t => t.name.toLowerCase().includes(q) || t.description.toLowerCase().includes(q));
+
+            let html = '';
+
+            if (matchedArticles.length > 0) {
+                html += `<h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-2">Articles</h4>`;
+                matchedArticles.forEach(a => {
+                    html += `
+                        <div onclick="navigateTo('article', '${a.slug}'); toggleSearchModal();" class="p-2.5 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl cursor-pointer">
+                            <h5 class="text-xs font-bold dark:text-white">${a.title}</h5>
+                            <p class="text-[10px] text-gray-500 truncate">${a.excerpt}</p>
+                        </div>
+                    `;
+                });
+            }
+
+            if (matchedTools.length > 0) {
+                html += `<h4 class="text-[10px] font-bold text-gray-400 uppercase tracking-wider my-2">Tools</h4>`;
+                matchedTools.forEach(t => {
+                    html += `
+                        <div onclick="window.open('${t.link}', '_blank'); toggleSearchModal();" class="p-2.5 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl cursor-pointer flex items-center justify-between">
+                            <div>
+                                <h5 class="text-xs font-bold dark:text-white">${t.name}</h5>
+                                <p class="text-[10px] text-gray-500">${t.category}</p>
+                            </div>
+                            <span class="text-[10px] text-blue-600 font-bold">Visit <i class="fas fa-external-link-alt ml-1"></i></span>
+                        </div>
+                    `;
+                });
+            }
+
+            if (!matchedArticles.length && !matchedTools.length) {
+                html = `<p class="text-xs text-gray-400 text-center py-4">No results found for "${query}".</p>`;
+            }
+
+            resultsContainer.innerHTML = html;
+        }
+
+        // Initialize Application
+        window.onload = initApp;
+    </script>
+</body>
+</html>
